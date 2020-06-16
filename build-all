@@ -1,0 +1,4 @@
+#!/bin/bash
+clear
+mvn clean package
+docker build -t djs/psl .

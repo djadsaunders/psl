@@ -2,6 +2,9 @@ package com.psl.codingchallenge.dto;
 
 import java.time.LocalDate;
 
+/**
+ * DTO for customers
+ */
 public class CustomerDTO {
     private long id;
     private String forename;

@@ -16,6 +16,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Services for customers
+ */
 @Service
 public class CustomerService {
 
@@ -28,18 +31,41 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
+    /**
+     * Find customer by ID
+     * @param id Customer ID
+     * @return Optional object containing customer if found
+     */
+    @Transactional
     public Optional<Customer> getCustomer(long id) {
         return customerRepository.findById(id);
     }
 
+    /**
+     * Find customer(s) for a given account ID
+     * @param id Account ID
+     * @return List of customers (list will be empty if none found)
+     */
+    @Transactional
     public List<Customer> findByAccountId(long id) {
         return customerRepository.findByAccountsId(id);
     }
 
+    /**
+     * Find all customers
+     * @return List of customers (list will be empty if none found)
+     */
+    @Transactional
     public List<Customer> listAllCustomers() {
         return (List<Customer>)customerRepository.findAll();
     }
 
+    /**
+     * Add a new account to a customers account list
+     * If the customer is not found, raise an error
+     * @param customerId The ID of the customer to which the account should be added
+     * @param accountNumber The account number for the new account
+     */
     @Transactional
     public void addNewAccount(long customerId, int accountNumber) {
         logger.debug("Add account " + accountNumber + " to customer " + customerId);
@@ -60,6 +86,14 @@ public class CustomerService {
         customerRepository.save(customer);
     }
 
+    /**
+     * Given an input (forename, surname and date of birth) check if this is a valid customer
+     * Note: validation does not check the associated accounts(s), only the fields listed
+     * @param forename Customer's forename
+     * @param surname Customer's surname
+     * @param dateOfBirth Customer's date of birth
+     * @return true or false depending whether this is a valid customer
+     */
     @Transactional
     public boolean validate(String forename, String surname, LocalDate dateOfBirth) {
         Optional<Customer> customer = customerRepository.findByForenameAndSurnameAndDateOfBirth(

@@ -8,6 +8,9 @@ import com.psl.codingchallenge.domain.Account;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+/**
+ * JPA repository for Accounts
+ */
 @Repository
 public interface AccountRepository extends CrudRepository<Account, Long> {
     List<Account> findByCustomersId(long id);

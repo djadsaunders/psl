@@ -1,0 +1,3 @@
+#!/bin/bash
+clear
+docker run -d --rm --name psl -p 8080:8080 djs/psl

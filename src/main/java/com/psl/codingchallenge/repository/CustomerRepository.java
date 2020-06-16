@@ -9,6 +9,9 @@ import com.psl.codingchallenge.domain.Customer;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+/**
+ * JPA repository for Customers
+ */
 @Repository
 public interface CustomerRepository extends CrudRepository<Customer, Long> {
     Optional<Customer> findById(long id);

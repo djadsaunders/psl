@@ -1,5 +1,8 @@
 package com.psl.codingchallenge.dto;
 
+/**
+ * DTO for customer accounts
+ */
 public class AccountDTO {
     private long id;
     private int accountNumber;

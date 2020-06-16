@@ -18,6 +18,9 @@ import javax.persistence.Table;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Represents a customer
+ */
 @Entity
 @Table(name="customer")
 public class Customer {
