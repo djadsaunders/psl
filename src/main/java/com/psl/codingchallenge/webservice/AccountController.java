@@ -44,7 +44,7 @@ public class AccountController {
      * @return List of Accounts (as DTOs) or empty list if no accounts found
      */
     @GetMapping
-    public List<AccountDTO> listCustomers(@RequestParam(name="customerId", required=false) Long customerId) {
+    public List<AccountDTO> listAccounts(@RequestParam(name="customerId", required=false) Long customerId) {
         List<Account> accounts = new ArrayList<>();
 
         if (customerId == null) {
